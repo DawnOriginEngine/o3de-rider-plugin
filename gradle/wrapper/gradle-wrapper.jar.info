@@ -1,0 +1,18 @@
+# Gradle Wrapper JAR File
+
+This file is a placeholder for the actual gradle-wrapper.jar file.
+
+To get the actual gradle-wrapper.jar file, you can:
+
+1. Run the following command in the project root directory:
+   ```
+   gradle wrapper --gradle-version 8.4
+   ```
+
+2. Or download it from a working Gradle project
+
+3. Or use the Gradle Wrapper task in your IDE
+
+The gradle-wrapper.jar file should be placed in this directory (gradle/wrapper/) and is required for the Gradle Wrapper to function properly.
+
+File size is typically around 60KB.
