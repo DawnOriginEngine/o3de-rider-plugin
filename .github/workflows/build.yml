@@ -118,7 +118,7 @@ jobs:
         retention-days: 30
         
     - name: Annotate PR with Detekt findings
-      uses: github/super-linter/slim@v4
+      uses: github/super-linter/slim@v7
       if: github.event_name == 'pull_request'
       env:
         DEFAULT_BRANCH: main
@@ -180,7 +180,7 @@ jobs:
         output: 'trivy-results.sarif'
         
     - name: Upload Trivy scan results to GitHub Security tab
-      uses: github/codeql-action/upload-sarif@v2
+      uses: github/codeql-action/upload-sarif@v3
       if: always()
       with:
         sarif_file: 'trivy-results.sarif'
