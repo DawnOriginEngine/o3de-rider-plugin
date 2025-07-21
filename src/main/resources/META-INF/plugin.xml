@@ -1,0 +1,71 @@
+<idea-plugin>
+    <id>com.o3de.rider-plugin</id>
+    <name>O3DE Tools</name>
+    <vendor email="support@o3de.org" url="https://o3de.org">O3DE Foundation</vendor>
+
+    <description><![CDATA[
+    O3DE Tools plugin for JetBrains Rider provides quick access to O3DE CLI commands for creating and managing Gems, Components, and EBuses.
+    
+    Features:
+    - Create new Gems with various templates (DefaultGem, AssetGem, CppToolGem, PythonToolGem, etc.)
+    - Create components from templates (DefaultComponent)
+    - Create custom templates using create-from-template
+    - Quick access to O3DE project configuration commands
+    - Integrated terminal commands with proper working directory
+    - Support for all O3DE CLI reference commands
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.terminal</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Tool Window -->
+        <toolWindow id="O3DE Tools" secondary="true" icon="/icons/o3de.svg" anchor="right"
+                    factoryClass="com.o3de.plugin.toolwindow.O3DEToolWindowFactory"/>
+        
+        <!-- Actions -->
+        <group id="O3DEActionGroup" text="O3DE" description="O3DE Tools" icon="/icons/o3de.svg">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            
+            <action id="CreateGem" class="com.o3de.plugin.actions.CreateGemAction"
+                    text="Create Gem" description="Create a new O3DE Gem">
+            </action>
+            
+            <action id="CreateComponent" class="com.o3de.plugin.actions.CreateComponentAction"
+                    text="Create Component" description="Create a new O3DE Component">
+            </action>
+            
+            <action id="CreateFromTemplate" class="com.o3de.plugin.actions.CreateFromTemplateAction"
+                    text="Create from Template" description="Create from O3DE Template">
+            </action>
+            
+            <separator/>
+            
+            <action id="EnableGem" class="com.o3de.plugin.actions.EnableGemAction"
+                    text="Enable Gem" description="Enable Gem in Project">
+            </action>
+            
+            <action id="DisableGem" class="com.o3de.plugin.actions.DisableGemAction"
+                    text="Disable Gem" description="Disable Gem in Project">
+            </action>
+            
+            <separator/>
+            
+            <action id="RegisterEngine" class="com.o3de.plugin.actions.RegisterEngineAction"
+                    text="Register Engine" description="Register O3DE Engine">
+            </action>
+        </group>
+    </extensions>
+
+    <actions>
+        <!-- Context menu actions for project tree -->
+        <group id="O3DEContextGroup">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="NewGroup"/>
+            <separator/>
+            <reference ref="CreateGem"/>
+            <reference ref="CreateComponent"/>
+            <reference ref="CreateFromTemplate"/>
+            <separator/>
+        </group>
+    </actions>
+</idea-plugin>
