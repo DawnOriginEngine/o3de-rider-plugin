@@ -1,0 +1,21 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://github.com/o3de/o3de-rider-plugin/blob/main/README.md
+    about: Check the documentation for usage instructions and troubleshooting
+  
+  - name: 💬 Discussions
+    url: https://github.com/o3de/o3de-rider-plugin/discussions
+    about: Ask questions, share ideas, and discuss the plugin with the community
+  
+  - name: 🔧 O3DE Support
+    url: https://github.com/o3de/o3de/discussions
+    about: For general O3DE engine questions and support
+  
+  - name: 🏢 JetBrains Support
+    url: https://intellij-support.jetbrains.com/hc/en-us
+    about: For JetBrains Rider specific issues and support
+  
+  - name: 🚀 O3DE Community
+    url: https://discord.gg/o3de
+    about: Join the O3DE Discord community for real-time discussions

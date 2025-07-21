@@ -1,0 +1,54 @@
+# Code Owners for O3DE Rider Plugin
+# This file defines who should review pull requests for different parts of the codebase
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owners - these users will be requested for review on all PRs
+* @maintainers
+
+# GitHub Actions and CI/CD workflows
+/.github/ @maintainers @ci-team
+
+# Build configuration
+/build.gradle.kts @maintainers @build-team
+/gradle/ @maintainers @build-team
+/gradlew* @maintainers @build-team
+/settings.gradle.kts @maintainers @build-team
+
+# Plugin configuration
+/src/main/resources/META-INF/plugin.xml @maintainers @plugin-team
+
+# Core services
+/src/main/kotlin/com/o3de/services/ @maintainers @backend-team
+
+# UI components and dialogs
+/src/main/kotlin/com/o3de/ui/ @maintainers @ui-team
+
+# Actions and user interactions
+/src/main/kotlin/com/o3de/actions/ @maintainers @ui-team
+
+# Tool windows
+/src/main/kotlin/com/o3de/toolwindow/ @maintainers @ui-team
+
+# Documentation
+/*.md @maintainers @docs-team
+/docs/ @maintainers @docs-team
+
+# Configuration files
+/config/ @maintainers @config-team
+
+# Resources and assets
+/src/main/resources/ @maintainers @assets-team
+
+# Test files
+/src/test/ @maintainers @qa-team
+
+# Security-related files
+/.github/workflows/security.yml @maintainers @security-team
+/SECURITY.md @maintainers @security-team
+
+# Dependency management
+/.github/dependabot.yml @maintainers @deps-team
+
+# Release management
+/.github/workflows/release.yml @maintainers @release-team
+CHANGELOG.md @maintainers @release-team

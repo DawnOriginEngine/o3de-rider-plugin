@@ -1,0 +1,77 @@
+# GitHub Dependabot configuration for O3DE Rider Plugin
+# This file configures automatic dependency updates
+
+version: 2
+updates:
+  # Enable version updates for Gradle dependencies
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "@maintainers"
+    assignees:
+      - "@maintainers"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "gradle"
+    ignore:
+      # Ignore major version updates for stable dependencies
+      - dependency-name: "org.jetbrains.kotlin.jvm"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "org.jetbrains.intellij"
+        update-types: ["version-update:semver-major"]
+    groups:
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin*"
+      intellij:
+        patterns:
+          - "org.jetbrains.intellij*"
+          - "org.jetbrains.idea*"
+      detekt:
+        patterns:
+          - "io.gitlab.arturbosch.detekt*"
+      testing:
+        patterns:
+          - "junit*"
+          - "org.junit*"
+          - "org.mockito*"
+          - "org.assertj*"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "@maintainers"
+    assignees:
+      - "@maintainers"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "ci"
+    groups:
+      actions:
+        patterns:
+          - "actions/*"
+          - "github/*"
+      gradle-actions:
+        patterns:
+          - "gradle/*"
