@@ -1,0 +1,155 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+gradle-app.setting
+.gradletasknamecache
+build-cache/
+
+# IntelliJ IDEA & JetBrains Rider
+.idea/
+*.iws
+*.iml
+*.ipr
+*.sln.iml
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Plugin specific
+*.zip
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+plugin.xml.backup
+dist/
+releases/
+
+# Logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary folders
+tmp/
+temp/
+
+# Editor directories and files
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Security files
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+secrets.properties
+.env
+.env.local
+.env.*.local
+
+# Test results
+test-results/
+junit.xml
+TEST-*.xml
+
+# Coverage
+coverage/
+*.lcov
+
+# Java
+*.class
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+replay_pid*
+
+# Kotlin
+*.kotlin_module
+*.kotlin_metadata
+
+# O3DE specific
+.o3de/
+user/
+Cache/
+Build/
+Install/
+*.o3de_manifest
+
+# CMake (for O3DE projects)
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+# Local configuration
+local.properties
+config/local/
+
+# Generated files
+generated/
+*.generated
+*_generated.*
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig

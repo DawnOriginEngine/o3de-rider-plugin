@@ -1,0 +1,196 @@
+# Gradle Version Catalog for O3DE Rider Plugin
+# This file centralizes all dependency versions and provides type-safe accessors
+
+[versions]
+# Kotlin and JVM
+kotlin = "2.1.0"
+jvm-target = "17"
+
+# IntelliJ Platform
+intellij-platform = "2025.1"
+intellij-platform-plugin = "2.1.0"
+
+# Testing
+junit-jupiter = "5.10.1"
+junit-platform = "1.10.1"
+mockito = "5.6.0"
+mockito-kotlin = "5.2.1"
+assertj = "3.24.2"
+testcontainers = "1.19.3"
+
+# Code Quality
+detekt = "1.23.4"
+ktlint = "0.50.0"
+sonarqube = "4.4.1.3373"
+jacoco = "0.8.8"
+
+# Security
+trivy = "0.46.1"
+owasp-dependency-check = "9.0.7"
+
+# Build Tools
+gradle-wrapper = "8.5"
+gradle-enterprise = "3.16.1"
+versions-plugin = "0.50.0"
+shadow = "8.1.1"
+
+# Serialization
+kotlinx-serialization = "1.6.2"
+jackson = "2.16.1"
+gson = "2.10.1"
+
+# Utilities
+commons-io = "2.15.1"
+commons-lang3 = "3.14.0"
+commons-codec = "1.16.0"
+guava = "32.1.3-jre"
+
+# Logging
+logback = "1.4.14"
+slf4j = "2.0.9"
+
+# HTTP Client
+okhttp = "4.12.0"
+retrofit = "2.9.0"
+
+# Coroutines
+kotlinx-coroutines = "1.7.3"
+
+# Date/Time
+java-time = "2.4.0"
+
+[libraries]
+# Kotlin Standard Library
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+# Testing Libraries
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
+junit-platform-runner = { module = "org.junit.platform:junit-platform-runner", version.ref = "junit-platform" }
+
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+mockito-inline = { module = "org.mockito:mockito-inline", version.ref = "mockito" }
+
+assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+
+testcontainers-core = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
+testcontainers-junit = { module = "org.testcontainers:junit-jupiter", version.ref = "testcontainers" }
+
+# Serialization
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+jackson-core = { module = "com.fasterxml.jackson.core:jackson-core", version.ref = "jackson" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson" }
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+
+# Utilities
+commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
+commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3" }
+commons-codec = { module = "commons-codec:commons-codec", version.ref = "commons-codec" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+
+# Logging
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+# HTTP Client
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+
+# Coroutines
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
+# Date/Time
+java-time = { module = "org.threeten:threeten-extra", version.ref = "java-time" }
+
+[bundles]
+# Testing bundle
+testing = [
+    "junit-jupiter-api",
+    "junit-jupiter-engine",
+    "junit-jupiter-params",
+    "junit-platform-launcher",
+    "mockito-core",
+    "mockito-kotlin",
+    "assertj-core",
+    "kotlin-test",
+    "kotlinx-coroutines-test"
+]
+
+# Integration testing bundle
+integration-testing = [
+    "testcontainers-core",
+    "testcontainers-junit"
+]
+
+# Serialization bundle
+serialization = [
+    "kotlinx-serialization-json",
+    "jackson-core",
+    "jackson-databind",
+    "jackson-kotlin",
+    "gson"
+]
+
+# Utilities bundle
+utilities = [
+    "commons-io",
+    "commons-lang3",
+    "commons-codec",
+    "guava"
+]
+
+# Logging bundle
+logging = [
+    "logback-classic",
+    "slf4j-api"
+]
+
+# HTTP client bundle
+http-client = [
+    "okhttp",
+    "okhttp-logging",
+    "retrofit",
+    "retrofit-gson"
+]
+
+# Coroutines bundle
+coroutines = [
+    "kotlinx-coroutines-core",
+    "kotlinx-coroutines-swing"
+]
+
+# Kotlin bundle
+kotlin = [
+    "kotlin-stdlib",
+    "kotlin-reflect"
+]
+
+[plugins]
+# Kotlin plugins
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+# IntelliJ Platform
+intellij-platform = { id = "org.jetbrains.intellij.platform", version.ref = "intellij-platform-plugin" }
+
+# Code Quality
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
+
+# Security
+owasp-dependency-check = { id = "org.owasp.dependencycheck", version.ref = "owasp-dependency-check" }
+
+# Build Tools
+gradle-enterprise = { id = "com.gradle.enterprise", version.ref = "gradle-enterprise" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions-plugin" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }

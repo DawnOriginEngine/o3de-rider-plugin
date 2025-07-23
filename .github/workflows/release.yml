@@ -1,0 +1,110 @@
+name: Release O3DE Rider Plugin
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version'
+        required: true
+        default: '1.0.1'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Java 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+        
+    - name: Cache Gradle dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+          
+    - name: Make gradlew executable
+      run: chmod +x gradlew
+      
+    - name: Build plugin
+      run: ./gradlew clean buildPlugin
+      
+    - name: Verify plugin
+      run: ./gradlew verifyPlugin
+      
+    - name: Get version from tag or input
+      id: get_version
+      run: |
+        if [ "${{ github.event_name }}" = "push" ]; then
+          VERSION=${GITHUB_REF#refs/tags/v}
+        else
+          VERSION=${{ github.event.inputs.version }}
+        fi
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        echo "Release version: $VERSION"
+        
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ steps.get_version.outputs.version }}
+        release_name: O3DE Rider Plugin v${{ steps.get_version.outputs.version }}
+        body: |
+          ## O3DE Rider Plugin v${{ steps.get_version.outputs.version }}
+          
+          ### 功能特性
+          - 快速创建O3DE Gem、组件和模板
+          - 集成O3DE CLI命令
+          - 可视化Gem管理界面
+          - 自动路径检测和配置
+          
+          ### 安装方法
+          1. 下载 `o3de-rider-plugin-${{ steps.get_version.outputs.version }}.zip`
+          2. 在JetBrains Rider中：File → Settings → Plugins → 齿轮图标 → Install Plugin from Disk
+          3. 选择下载的zip文件并重启IDE
+          
+          ### 系统要求
+          - JetBrains Rider 2023.1+
+          - O3DE引擎安装
+          - Java 17+
+          
+          ### 更新日志
+          - 初始版本发布
+          - 支持所有主要O3DE CLI功能
+          - 完整的用户界面集成
+        draft: false
+        prerelease: false
+        
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: build/distributions/o3de-rider-plugin-1.0.0.zip
+        asset_name: o3de-rider-plugin-${{ steps.get_version.outputs.version }}.zip
+        asset_content_type: application/zip
+        
+    - name: Upload build logs
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: build-logs-${{ steps.get_version.outputs.version }}
+        path: |
+          build/reports/
+          build/tmp/
+        retention-days: 7

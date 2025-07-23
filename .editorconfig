@@ -1,0 +1,129 @@
+# EditorConfig for O3DE Rider Plugin
+# This file defines coding styles for different file types
+# See https://editorconfig.org for more information
+
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+# Kotlin files
+[*.{kt,kts}]
+indent_size = 4
+max_line_length = 120
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
+ij_kotlin_imports_layout = *, java.**, javax.**, kotlin.**, ^
+ij_kotlin_name_count_to_use_star_import = 5
+ij_kotlin_name_count_to_use_star_import_for_members = 3
+ij_kotlin_packages_to_use_import_on_demand = java.util.*, kotlinx.android.synthetic.**, io.ktor.**
+ij_kotlin_code_style_defaults = KOTLIN_OFFICIAL
+
+# Java files
+[*.java]
+indent_size = 4
+max_line_length = 120
+ij_java_imports_layout = *, |, javax.**, java.**, |, $*
+ij_java_class_count_to_use_import_on_demand = 5
+ij_java_names_count_to_use_import_on_demand = 3
+ij_java_packages_to_use_import_on_demand = java.awt.*, javax.swing.*
+
+# XML files (including plugin.xml)
+[*.xml]
+indent_size = 2
+max_line_length = 120
+ij_xml_keep_line_breaks = false
+ij_xml_attribute_wrap = normal
+ij_xml_text_wrap = normal
+
+# JSON files
+[*.json]
+indent_size = 2
+max_line_length = 120
+
+# YAML files
+[*.{yml,yaml}]
+indent_size = 2
+max_line_length = 120
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 80
+indent_size = 2
+
+# Gradle files
+[*.gradle]
+indent_size = 4
+
+[*.gradle.kts]
+indent_size = 4
+max_line_length = 120
+
+# Properties files
+[*.properties]
+indent_size = 4
+max_line_length = 120
+
+# Shell scripts
+[*.{sh,bash}]
+end_of_line = lf
+indent_size = 2
+
+# Batch files
+[*.{bat,cmd}]
+end_of_line = crlf
+indent_size = 2
+
+# PowerShell scripts
+[*.ps1]
+end_of_line = crlf
+indent_size = 4
+
+# HTML files
+[*.html]
+indent_size = 2
+max_line_length = 120
+
+# CSS files
+[*.css]
+indent_size = 2
+max_line_length = 120
+
+# JavaScript/TypeScript files
+[*.{js,ts}]
+indent_size = 2
+max_line_length = 120
+
+# Configuration files
+[*.toml]
+indent_size = 2
+
+[*.ini]
+indent_size = 4
+
+# Documentation files
+[*.{rst,txt}]
+max_line_length = 80
+indent_size = 2
+
+# License and legal files
+[{LICENSE,NOTICE,COPYRIGHT}]
+max_line_length = off
+
+# Generated files (should not be edited manually)
+[{*.generated,*_generated.*}]
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+# Binary files (should not be processed)
+[*.{png,jpg,jpeg,gif,ico,svg,woff,woff2,ttf,eot}]
+insert_final_newline = false
+trim_trailing_whitespace = false
