@@ -50,15 +50,13 @@ class O3DECommandService(private val project: Project) {
         onComplete: (Boolean, String) -> Unit = { _, _ -> }
     ) {
         val command = buildO3DECommand("create-from-template")
-            .withParameters("--template-name", templateName)
             .withParameters("--destination-path", destinationPath)
             .withParameters("--destination-name", componentName)
-        
-        // Add replacement parameters for template variable substitution
-        command.withParameters("--replace", "GemName", gemName)
-        command.withParameters("--replace", "ComponentName", componentName)
-        command.withParameters("--replace", "COMPONENT_NAME", componentName.uppercase())
-        
+            .withParameters("--template-name", templateName)
+            .withParameters("--keep-restricted-in-instance")
+            .withParameters("--replace", "'\${GemName}'", gemName)
+            .withParameters("--force")
+                
         executeCommand(command, "Creating Component: $componentName", onComplete)
     }
     

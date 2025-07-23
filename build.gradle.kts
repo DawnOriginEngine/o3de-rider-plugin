@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.o3de"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
